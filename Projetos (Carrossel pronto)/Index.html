@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quero Adotar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="carrossel">
+            <div class="container-images">
+                <img src="C:/Users/lg/Desktop/PI FACULDADE/Projetos/1 Projetos/Arquivo/Img 02..jpeg" alt="Imagem 11">
+                <img src="C:/Users/lg/Desktop/PI FACULDADE/Projetos/1 Projetos/Arquivo/Img 03.jpeg" alt="Imagem 22">
+                <img src="C:/Users/lg/Desktop/PI FACULDADE/Projetos/1 Projetos/Arquivo/Img 04.jpeg" alt="Imagem 3">
+                <img src="C:/Users/lg/Desktop/PI FACULDADE/Projetos/1 Projetos/Arquivo/Img 05.jpeg" alt="Imagem 4">
+                <img src="C:/Users/lg/Desktop/PI FACULDADE/Projetos/1 Projetos/Arquivo/Img 06.jpeg" alt="Imagem 5">
+            </div>
+            <button class="prev">&#10094;</button> 
+            <button class="next">&#10095;</button> 
+        </div>
+    </div>
+
+    <script src="script.js"></script> 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const carrossel = document.querySelector('.carrossel');
+            const imagens = carrossel.querySelectorAll('.container-images img');
+            const prevButton = carrossel.querySelector('.prev');
+            const nextButton = carrossel.querySelector('.next');
+            let currentIndex = 0;
+
+            function showImage(index) {
+                imagens.forEach((img, i) => {
+                    img.style.display = i === index ? 'block' : 'none';
+                });
+            }
+
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % imagens.length;
+                showImage(currentIndex);
+            }
+
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + imagens.length) % imagens.length;
+                showImage(currentIndex);
+            }
+
+            prevButton.addEventListener('click', prevImage);
+            nextButton.addEventListener('click', nextImage);
+
+            showImage(currentIndex);
+        });
+    </script>
+</body>
+</html>
